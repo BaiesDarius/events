@@ -6,11 +6,42 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700,900' rel='stylesheet' type='text/css'>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
 .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
 .fa-anchor,.fa-coffee {font-size:200px}
+.moving-letters {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    height: 200px;
+  }
+.ml10 {
+    position: relative;
+    font-weight: 900;
+    font-size: 4em;
+  }
+  
+  .ml10 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.2em;
+    padding-right: 0.05em;
+    padding-bottom: 0.1em;
+    overflow: hidden;
+  }
+  
+  .ml10 .letter {
+    display: inline-block;
+    line-height: 1em;
+    transform-origin: 0 0;
+  }
 </style>
 <style type="text/css">
     #content {
@@ -62,10 +93,36 @@ else{
 <!-- Header -->
 
 <header class="w3-display-container w3-content w3-center" style="max-width:1500px">
-<img class="w3-image" src="images/homepage.jpg" alt="Me" width="1500" height="600">
+<img class="w3-image" src="images/index.jpg" alt="Me" width="1500" height="600">
 <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
-    <h1 class="w3-hide-medium w3-hide-small w3-xxxlarge">Evenimente Brasov</h1>
-    <h5 class="w3-hide-large" style="white-space:nowrap">Evenimente Brasov</h5>
+    <h1 class="ml10">
+        <span class="text-wrapper">
+            <span class="letters">Evenimente</span><br>
+            <span class="letters">Brasov</span>
+        </span>
+    </h1>
+
+    <script>
+    $('.ml10 .letters').each(function(){
+        $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+    });
+    
+    anime.timeline({loop: true})
+        .add({
+        targets: '.ml10 .letter',
+        rotateY: [-90, 0],
+        duration: 1300,
+        delay: function(el, i) {
+            return 45 * i;
+        }
+        }).add({
+        targets: '.ml10',
+        opacity: 0,
+        duration: 1000,
+        easing: "easeOutExpo",
+        delay: 1000
+        });
+    </script>
     <?php if(!isset($_SESSION['username']) || empty($_SESSION['username'])){?>
     <p class="w3-xlarge">Fii la curent cu toate evenimentele care au loc in orasul Brasov.</p>
   <?php }
