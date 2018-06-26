@@ -40,12 +40,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
 <br><br>
 <center>
 <?php
-    $link = mysqli_connect("localhost", "root", "", "events");
-    $username = $_SESSION['username'];
-    // Check connection
-    if($link === false){
-        die("ERROR: Could not connect. " . mysqli_connect_error());
-    }
+    require_once 'config.php';
     
     // Attempt select query execution
     $sql = " SELECT * FROM events JOIN userevents ON events.id_event = userevents.id_event WHERE userevents.username= '".$_SESSION['username']."'";

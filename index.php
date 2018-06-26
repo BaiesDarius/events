@@ -22,13 +22,13 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     margin: auto;
     height: 200px;
   }
-.ml10 {
+.title {
     position: relative;
-    font-weight: 900;
-    font-size: 4em;
+    font-weight: 500;
+    font-size: 3em;
   }
   
-  .ml10 .text-wrapper {
+  .title .text-wrapper {
     position: relative;
     display: inline-block;
     padding-top: 0.2em;
@@ -37,7 +37,7 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     overflow: hidden;
   }
   
-  .ml10 .letter {
+  .title .letter {
     display: inline-block;
     line-height: 1em;
     transform-origin: 0 0;
@@ -59,7 +59,7 @@ if(!isset($_SESSION['username']) || empty($_SESSION['username'])){?>
   <div class="w3-bar w3-black w3-card w3-left-align w3-medium">
     <a href="index.php" class="w3-bar-item w3-button w3-padding-large w3-blue">Acasa</a>
     <a href="categories.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue">Categorii</a>
-    <a href="login.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue w3-right">Login</a>
+    <a href="login.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue w3-right">Autentificare</a>
     <a href="register.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue w3-right">Inregistrare</a>
   </div>
 </div>
@@ -92,10 +92,10 @@ else{
 
 <!-- Header -->
 
-<header class="w3-display-container w3-content w3-center" style="max-width:1500px">
-<img class="w3-image" src="images/index.jpg" alt="Me" width="1500" height="600">
+<header class="w3-display-container w3-content w3-center" style="max-width:2000px">
+<img class="w3-image" src="images/index.jpg" alt="Me" width="2000" height="600">
 <div class="w3-display-middle w3-padding-large w3-border w3-wide w3-text-light-grey w3-center">
-    <h1 class="ml10">
+    <h1 class="title">
         <span class="text-wrapper">
             <span class="letters">Evenimente</span><br>
             <span class="letters">Brasov</span>
@@ -103,20 +103,20 @@ else{
     </h1>
 
     <script>
-    $('.ml10 .letters').each(function(){
+    $('.title .letters').each(function(){
         $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
     });
     
     anime.timeline({loop: true})
         .add({
-        targets: '.ml10 .letter',
+        targets: '.title .letter',
         rotateY: [-90, 0],
         duration: 1300,
         delay: function(el, i) {
             return 45 * i;
         }
         }).add({
-        targets: '.ml10',
+        targets: '.title',
         opacity: 0,
         duration: 1000,
         easing: "easeOutExpo",
@@ -133,12 +133,7 @@ else{
 </header>
 <center>
 <?php
-    $link = mysqli_connect("localhost", "root", "", "events");
-    
-    // Check connection
-    if($link === false){
-        die("ERROR: Could not connect. " . mysqli_connect_error());
-    }
+    require_once 'config.php';
     
     // Attempt select query execution
     $sql = "SELECT * FROM events ORDER BY date_event";
@@ -168,7 +163,6 @@ else{
                         <?php echo "'width=200 height=250/>" ?>
                         <div class="w3-container w3-white">
                             <h3>
-                            <?php $_SESSION['idevent']=$idevent;?>
                             <a href="event.php?id=<?php echo $idevent; ?>"><?php echo $title;?></a>
                             </h3>
                             <br>

@@ -28,7 +28,7 @@
                 <div class="w3-bar w3-black w3-card w3-left-align w3-medium">
                     <a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue">Acasa</a>
                     <a href="categories.php" class="w3-bar-item w3-button w3-padding-large w3-blue">Categorii</a>
-                    <a href="login.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue w3-right">Login</a>
+                    <a href="login.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue w3-right">Autentificare</a>
                     <a href="register.php" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-blue w3-right">Inregistrare</a>
                 </div>
             </div>
