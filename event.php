@@ -14,7 +14,6 @@
     <style>
     body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
     .w3-bar,h1,button {font-family: "Montserrat", sans-serif}
-    .fa-anchor,.fa-coffee {font-size:200px}
     .pb-cmnt-container {
       font-family: Lato;
       margin-top: 100px;s
@@ -181,6 +180,7 @@ else{?>
     <div class="container pb-cmnt-container">
     <div class="row" align="left">
         <div class="col-md-6 col-md-offset-0">
+            <h1>Adaugă un comentariu:</h1>
             <div class="panel panel-info">
                 <div class="panel-body">
                     <textarea placeholder="Adauga un comentariu." name="comment" class="pb-cmnt-textarea" form="comment"></textarea>
